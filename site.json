@@ -1,0 +1,44 @@
+{
+  "siteName": "BARBER PRO",
+  "tagline": "סטייל מתחיל כאן.",
+  "subtitle": "תספורות מדויקות. אווירה ייחודית. שירות עם אופי.",
+  "heroImage": "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1600&q=85",
+  "phone": "",
+  "whatsapp": "",
+  "address": "נתניה",
+  "hours": "א׳–ה׳ בתיאום מראש",
+  "theme": {
+    "background": "#101012",
+    "surface": "#1b1b20",
+    "accent": "#d8b45a",
+    "text": "#f8f5ef",
+    "font": "Arial"
+  },
+  "pages": [
+    {
+      "id": "home",
+      "title": "בית",
+      "content": "ברוכים הבאים ל-BARBER PRO"
+    },
+    {
+      "id": "services",
+      "title": "שירותים ומחירים",
+      "content": "תספורת גברים — 70 ₪\nעיצוב זקן — 35 ₪\nתספורת + זקן — 95 ₪"
+    },
+    {
+      "id": "gallery",
+      "title": "גלריה",
+      "content": "תמונות להמחשה בלבד"
+    },
+    {
+      "id": "contact",
+      "title": "צור קשר",
+      "content": "נשמח לשמוע מכם"
+    }
+  ],
+  "photos": [
+    "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=900&q=80",
+    "https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=900&q=80",
+    "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=900&q=80"
+  ]
+}

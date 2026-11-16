@@ -1,0 +1,18 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /sites/barber-pro {
+      allow read: if true;
+      allow create, update, delete: if request.auth != null
+        && request.auth.uid == "REPLACE_WITH_OWNER_UID"
+        && request.resource.data.keys().hasOnly([
+          "siteName", "tagline", "subtitle", "heroImage", "phone",
+          "whatsapp", "address", "hours", "theme", "pages", "photos"
+        ])
+        && request.resource.data.siteName is string
+        && request.resource.data.pages is list
+        && request.resource.data.photos is list
+        && request.resource.data.theme is map;
+    }
+  }
+}

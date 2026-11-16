@@ -14,6 +14,7 @@ app.post('/api/login',async(req,res,next)=>{try{const {email,password}=req.body|
 app.post('/api/logout',auth,async(req,res,next)=>{try{await pool.query('DELETE FROM admin_sessions WHERE token_hash=$1',[hash(cookies(req).bp_session)]);res.clearCookie('bp_session',{path:'/'});res.json({ok:true})}catch(e){next(e)}});
 app.get('/api/me',auth,(req,res)=>res.json({ok:true}));
 app.put('/api/site',auth,async(req,res,next)=>{try{const d=req.body;if(!d||typeof d!=='object'||Array.isArray(d)||JSON.stringify(d).length>120000||!Array.isArray(d.pages)||!Array.isArray(d.photos)||d.pages.length>30||d.photos.length>40)return res.status(400).json({error:'Contenu non valide'});await pool.query("UPDATE site_settings SET data=$1,updated_at=now() WHERE id='barber-pro'",[JSON.stringify(d)]);res.json({ok:true})}catch(e){next(e)}});
+app.use((req,res,next)=>{if(/^\/(server\.js|package(?:-lock)?\.json|railway\.json|site\.json|firestore\.rules|firebase-config\.js|FIREBASE-SETUP\.md)$/i.test(req.path))return res.sendStatus(404);next()});
 app.use(express.static(__dirname,{index:'index.html',extensions:['html'],dotfiles:'deny',setHeaders:(res,p)=>{if(p.endsWith('admin.html'))res.set('Cache-Control','no-store')}}));
 app.use((err,req,res,next)=>{console.error(err);res.status(500).json({error:'Erreur serveur'})});
 init().then(()=>app.listen(process.env.PORT||3000,'0.0.0.0',()=>console.log('BARBER PRO ready'))).catch(e=>{console.error(e);process.exit(1)});

@@ -5,7 +5,7 @@
 </style></head><body><div class="demo">אתר הדגמה — הפרטים והמחירים להמחשה בלבד</div><header><nav><a href="#" class="brand" id="brand">BARBER PRO</a><div class="navlinks" id="navlinks"></div></nav></header><div class="hero" id="top"><div><div>💈 BARBER PRO</div><h1 id="headline">סטייל מתחיל כאן.</h1><p id="subtitle"></p><a href="#contact" class="btn">ליצירת קשר</a></div></div><main id="content" class="wrap"></main><footer id="footer"></footer>
 <script>
 (async()=>{
-let d;try{const r=await fetch('/api/site',{cache:'no-store'});if(!r.ok)throw Error('config');d=await r.json()}catch(e){document.getElementById('content').textContent='לא ניתן לטעון את תוכן האתר. נסו לרענן את הדף.';return}
+let d;try{let r=await fetch('/api/site',{cache:'no-store'});if(!r.ok)r=await fetch('site.json?v='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error('config');d=await r.json()}catch(e){document.getElementById('content').textContent='לא ניתן לטעון את תוכן האתר. נסו לרענן את הדף.';return}
 const root=document.documentElement;const safeColor=x=>/^#[0-9a-f]{6}$/i.test(x)?x:null;
 for(const [k,v] of Object.entries({background:'--bg',surface:'--surface',accent:'--accent',text:'--text'})){const color=safeColor(d.theme?.[k]);if(color)root.style.setProperty(v,color)}
 const fonts=['Arial','Georgia','Tahoma','Verdana','Trebuchet MS','Times New Roman'];if(fonts.includes(d.theme?.font))root.style.setProperty('--font',JSON.stringify(d.theme.font));
